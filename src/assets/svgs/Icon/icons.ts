@@ -1,0 +1,15 @@
+export type Icons =
+  | "checkmark-off"
+  | "checkmark-on"
+  | "chevron-filled"
+  | "chevron"
+  | "close"
+  | "delete"
+  | "device"
+  | "gateway"
+  | "edit"
+  | "external-link"
+  | "filter"
+  | "search"
+  | "options"
+  | "thick";
