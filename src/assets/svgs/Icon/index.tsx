@@ -14,6 +14,7 @@ const StyledIcon = styled.svg<{
   stroke: ${({ $color }) => $color};
   width: ${({ $width }) => $width};
   height: ${({ $height }) => $height};
+  transition: all .2s ease;
 
   &:hover {
     ${({ $hover }) => $hover}
