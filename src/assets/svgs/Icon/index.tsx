@@ -7,11 +7,21 @@ const StyledIcon = styled.svg<{
   $color: string;
   $width: string;
   $height: string;
+  $hover: string;
+  $active: string;
 }>`
   fill: ${({ $color }) => $color};
   stroke: ${({ $color }) => $color};
   width: ${({ $width }) => $width};
   height: ${({ $height }) => $height};
+
+  &:hover {
+    ${({ $hover }) => $hover}
+  }
+
+  &:active {
+    ${({ $active }) => $active}
+  }
 `;
 
 type Props = {
@@ -19,6 +29,8 @@ type Props = {
   color?: string;
   width?: string;
   height?: string;
+  hover?: string;
+  active?: string;
 };
 
 /**
@@ -26,14 +38,24 @@ type Props = {
  * @prop `color` [string: any valid `css` color] - the color of the icon. Default value: `#fff`;
  * @prop `width`[string: any valid `css` unit] - the width of the icon. Default value: `1.6rem`;
  * @prop `height`[string: any valid `css` unit] - the height of the icon. Default value: `1.6rem`;
+ * @prop `hover`[string: any valid `css`] - the hover pseudo-class of the icon;
+ * @prop `active`[string: any valid `css`] - the active pseudo-class of the icon;
  */
 const Icon = ({
   name,
   color = "#fff",
   width = "1.6rem",
   height = "1.6rem",
+  hover = "",
+  active = "",
 }: Props) => (
-  <StyledIcon $color={color} $width={width} $height={height}>
+  <StyledIcon
+    $color={color}
+    $width={width}
+    $height={height}
+    $hover={hover}
+    $active={active}
+  >
     <use href={`${Sprite}#${name}`} />
   </StyledIcon>
 );
