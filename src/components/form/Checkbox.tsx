@@ -70,17 +70,11 @@ function Checkbox({
         value={value}
         onChange={(e) => {
           checkHandler(e);
-          if (handleChange) handleChange(e);
+          handleChange(e);
         }}
         ref={inputRef}
       />
-      <StyledLabel
-        htmlFor={id}
-        tabIndex={0}
-        onKeyDown={(e) => {
-          handleKeyboardEvent(e);
-        }}
-      >
+      <StyledLabel htmlFor={id} tabIndex={0} onKeyDown={handleKeyboardEvent}>
         <Icon
           name={checked ? "checkmark-on" : "checkmark-off"}
           color="currentColor"
