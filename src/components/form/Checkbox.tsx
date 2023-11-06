@@ -1,11 +1,4 @@
-import {
-  ChangeEvent,
-  KeyboardEvent,
-  ReactNode,
-  useId,
-  useRef,
-  useState,
-} from "react";
+import { ChangeEvent, KeyboardEvent, ReactNode, useRef, useState } from "react";
 import styled from "styled-components";
 
 import Icon from "../../assets/svgs/Icon";
@@ -47,7 +40,6 @@ function Checkbox({
   color = "var(--color-white)",
   children,
 }: CheckboxProps) {
-  const id = useId();
   const [checked, setIsChecked] = useState(isChecked);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -63,18 +55,17 @@ function Checkbox({
 
   return (
     <Container $color={color}>
-      <StyledInput
-        id={id}
-        type="checkbox"
-        checked={checked}
-        value={value}
-        onChange={(e) => {
-          checkHandler(e);
-          handleChange(e);
-        }}
-        ref={inputRef}
-      />
-      <StyledLabel htmlFor={id} tabIndex={0} onKeyDown={handleKeyboardEvent}>
+      <StyledLabel tabIndex={0} onKeyDown={handleKeyboardEvent}>
+        <StyledInput
+          type="checkbox"
+          checked={checked}
+          value={value}
+          onChange={(e) => {
+            checkHandler(e);
+            handleChange(e);
+          }}
+          ref={inputRef}
+        />
         <Icon
           name={checked ? "checkmark-on" : "checkmark-off"}
           color="currentColor"
