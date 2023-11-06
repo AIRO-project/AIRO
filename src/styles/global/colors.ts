@@ -11,6 +11,7 @@ const colors = css`
     --color-grey-dark-2: #3c444c;
 
     --color-primary: #7a1eff;
+    --color-primary-dark: #4b1797;
     --color-secondary: #6202ee;
     --color-error: #9e00d6;
   }
