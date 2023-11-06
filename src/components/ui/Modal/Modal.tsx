@@ -8,7 +8,7 @@ import {
 import Icon from "../../../assets/svgs/Icon";
 
 type Props = {
-  toggleModal: () => void;
+  closeModal: () => void;
   children: ReactNode;
 };
 
@@ -17,13 +17,13 @@ type Props = {
  * @prop `children` [ReactNode] - `the modal content`;
  */
 
-function Modal({ toggleModal, children }: Props) {
+function Modal({ closeModal, children }: Props) {
   return (
-    <StyledModalOverlay onClick={toggleModal}>
+    <StyledModalOverlay onClick={closeModal}>
       <StyledModalContent onClick={(e) => e.stopPropagation()}>
         {children}
 
-        <StyledModalButton onClick={toggleModal}>
+        <StyledModalButton onClick={closeModal}>
           <Icon
             name="close"
             width="1.6rem"
