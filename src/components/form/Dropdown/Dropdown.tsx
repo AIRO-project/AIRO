@@ -60,7 +60,9 @@ const Dropdown = ({
           <Icon
             name="chevron"
             width="1rem"
-            color={disabled ? "var(--color-grey-light-1)" : "white"}
+            color={
+              disabled ? "var(--color-grey-light-1)" : "var(--color-white)"
+            }
           />
         </AnimatedIcon>
       </StyledButton>

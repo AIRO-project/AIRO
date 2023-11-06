@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
 
-const StyledAnimatedChevron = styled.div<{ reversed: boolean }>`
+const StyledAnimatedIcon = styled.div<{ reversed: boolean }>`
   transition: transform 0.2s ease;
   transform: ${({ reversed }) =>
     reversed ? "rotate(90deg)" : "rotate(-90deg)"};
@@ -12,12 +12,12 @@ type Props = {
   children: ReactNode;
 };
 
-function AnimatedChevron(props: Props) {
+function AnimatedIcon(props: Props) {
   return (
-    <StyledAnimatedChevron reversed={props.reversed}>
+    <StyledAnimatedIcon reversed={props.reversed}>
       {props.children}
-    </StyledAnimatedChevron>
+    </StyledAnimatedIcon>
   );
 }
 
-export default AnimatedChevron;
+export default AnimatedIcon;
