@@ -34,6 +34,13 @@ const typography = {
     font-weight: 600;
     letter-spacing: 0.15px;
   `,
+  subtitle4: css`
+    font-family: var(--font-secondary);
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    font-weight: 400;
+    letter-spacing: 0.15px;
+  `,
   body: css`
     font-family: var(--font-secondary);
     font-size: 1.5rem;
