@@ -16,7 +16,7 @@ export type SwitchStylesProperties = {
 };
 
 export const SwitchStyles: Record<SwitchVariants, SwitchStylesProperties> = {
-  "switch-primary": {
+  primary: {
     Rail: styled.label<{ $checked: boolean }>`
       cursor: pointer;
       display: inline-flex;
@@ -41,7 +41,7 @@ export const SwitchStyles: Record<SwitchVariants, SwitchStylesProperties> = {
       transform: translateX(${({ $checked }) => ($checked ? "2.5rem" : "0")});
     `,
   },
-  "switch-secondary": {
+  secondary: {
     Rail: styled.label<{ $checked: boolean }>`
       cursor: pointer;
       display: inline-flex;

@@ -3,7 +3,7 @@ import { ChangeEvent } from "react";
 import { SwitchStyles } from "./Switch.styles";
 import Checkbox from "../Checkbox";
 
-export type SwitchVariants = "switch-primary" | "switch-secondary";
+export type SwitchVariants = "primary" | "secondary";
 
 type SwitchProps = {
   value: string;
@@ -22,7 +22,7 @@ function Switch({
   handleChange,
   value,
   checked = false,
-  type = "switch-primary",
+  type = "primary",
 }: SwitchProps) {
   return (
     <Checkbox
