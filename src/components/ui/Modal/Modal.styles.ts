@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { fadeIn, scaleUp } from "../../../styles/global/animations";
+
 export const StyledModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -10,33 +12,14 @@ export const StyledModalOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fadeIn 0.3s ease-in-out;
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+  animation: ${fadeIn} 0.3s ease-in-out;
 `;
 
 export const StyledModalContent = styled.div`
   position: relative;
   background: var(--color-grey-dark-2);
   padding: 5.2rem 3.7rem;
-  animation: appear 0.3s ease-in-out;
-
-  @keyframes appear {
-    0% {
-      transform: scale(0.2);
-    }
-
-    100% {
-      transform: scale(1);
-    }
-  }
+  animation: ${scaleUp} 0.3s ease-in-out;
 `;
 
 export const StyledModalButton = styled.button`
