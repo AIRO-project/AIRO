@@ -1,7 +1,9 @@
 import { ChangeEvent, KeyboardEvent, ReactNode, useRef, useState } from "react";
 import styled from "styled-components";
 
+import { SwitchStylesProperties } from "./Switch/Switch.styles";
 import Icon from "../../assets/svgs/Icon";
+import { clickElOnKeyPress } from "../../utils/helpers";
 
 const Container = styled.div<{ $color: string }>`
   color: ${({ $color }) => $color};
@@ -21,26 +23,30 @@ const StyledLabel = styled.label`
 
 type CheckboxProps = {
   value: string;
-  isChecked?: boolean;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  children: ReactNode;
+  children?: ReactNode;
+  checked?: boolean;
+  styledAs?: "checkbox" | "switch";
+  SwitchStyles?: SwitchStylesProperties;
   color?: string;
 };
 
 /**
  * @prop `value`[string] - the `value` of the checkbox;
  * @prop `handleChange`[function] - gets the checkbox's `ChangeEvent` as parameter;
- * @prop `isChecked`[boolean] - the default state of the checkbox, Default value: `false`;
+ * @prop `checked`[boolean] - the default state of the checkbox, Default value: `false`;
  * @prop `color` [string: any valid `css` color] - the color of the checkbox. Default value: `#fff`;
  */
 function Checkbox({
   value,
   handleChange,
-  isChecked = false,
+  SwitchStyles,
+  checked = false,
   color = "var(--color-white)",
+  styledAs = "checkbox",
   children,
 }: CheckboxProps) {
-  const [checked, setIsChecked] = useState(isChecked);
+  const [isChecked, setIsChecked] = useState(checked);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   function checkHandler(e: ChangeEvent<HTMLInputElement>) {
@@ -48,34 +54,56 @@ function Checkbox({
   }
 
   function handleKeyboardEvent(e: KeyboardEvent<HTMLLabelElement>) {
-    if (e.code === "Space" || e.code === "Enter") {
-      inputRef.current?.click();
-    }
+    clickElOnKeyPress(e, inputRef);
   }
 
-  return (
-    <Container $color={color}>
-      <StyledLabel tabIndex={0} onKeyDown={handleKeyboardEvent}>
+  if (styledAs === "checkbox") {
+    return (
+      <Container $color={color}>
+        <StyledLabel tabIndex={0} onKeyDown={handleKeyboardEvent}>
+          <StyledInput
+            type="checkbox"
+            checked={isChecked}
+            value={value}
+            onChange={(e) => {
+              checkHandler(e);
+              handleChange(e);
+            }}
+            ref={inputRef}
+          />
+          <Icon
+            name={isChecked ? "checkmark-on" : "checkmark-off"}
+            color="currentColor"
+            width="1.4rem"
+            height="1.4rem"
+          />
+          {children}
+        </StyledLabel>
+      </Container>
+    );
+  }
+
+  if (styledAs === "switch" && SwitchStyles) {
+    return (
+      <SwitchStyles.Rail
+        $checked={isChecked}
+        tabIndex={0}
+        onKeyDown={handleKeyboardEvent}
+      >
         <StyledInput
           type="checkbox"
-          checked={checked}
           value={value}
+          checked={isChecked}
           onChange={(e) => {
             checkHandler(e);
             handleChange(e);
           }}
           ref={inputRef}
         />
-        <Icon
-          name={checked ? "checkmark-on" : "checkmark-off"}
-          color="currentColor"
-          width="1.4rem"
-          height="1.4rem"
-        />
-        {children}
-      </StyledLabel>
-    </Container>
-  );
+        <SwitchStyles.Knob $checked={isChecked} />
+      </SwitchStyles.Rail>
+    );
+  }
 }
 
 export default Checkbox;
