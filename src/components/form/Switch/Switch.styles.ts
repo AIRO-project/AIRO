@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { FC, HTMLProps } from "react";
 import styled from "styled-components";
 
 import { SwitchVariants } from "./Switch";
 
 export type SwitchStylesProperties = {
-  Rail: any;
-  Knob: any;
+  Rail: FC<{ $checked: boolean } & HTMLProps<HTMLLabelElement>>;
+  Knob: FC<{ $checked: boolean } & HTMLProps<HTMLDivElement>>;
 };
 
 export const SwitchStyles: Record<SwitchVariants, SwitchStylesProperties> = {
