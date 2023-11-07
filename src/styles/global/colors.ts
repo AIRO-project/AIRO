@@ -12,7 +12,8 @@ const colors = css`
 
     --color-primary: #7a1eff;
     --color-secondary: #6202ee;
-    --color-error: #eb5757;
+    --color-error: #9e00d6;
+    --color-red-error: #eb5757;
   }
 `;
 

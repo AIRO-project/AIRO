@@ -1,5 +1,11 @@
 import { css } from "styled-components";
 
+const subtitle = css`
+  font-family: var(--font-secondary);
+  line-height: 2.4rem;
+  letter-spacing: 0.15px;
+`;
+
 const typography = {
   heading1: css`
     font-family: var(--font-primary);
@@ -14,32 +20,24 @@ const typography = {
     font-weight: 700;
   `,
   subtitle1: css`
-    font-family: var(--font-secondary);
+    ${subtitle}
     font-size: 1.6rem;
-    line-height: 2.4rem;
     font-weight: 700;
-    letter-spacing: 0.15px;
   `,
   subtitle2: css`
-    font-family: var(--font-secondary);
+    ${subtitle}
     font-size: 1.6rem;
-    line-height: 2.4rem;
     font-weight: 600;
-    letter-spacing: 0.15px;
   `,
   subtitle3: css`
-    font-family: var(--font-secondary);
+    ${subtitle}
     font-size: 1.4rem;
-    line-height: 2.4rem;
     font-weight: 600;
-    letter-spacing: 0.15px;
   `,
   subtitle4: css`
-    font-family: var(--font-secondary);
+    ${subtitle}
     font-size: 1.4rem;
-    line-height: 2.4rem;
     font-weight: 400;
-    letter-spacing: 0.15px;
   `,
   body: css`
     font-family: var(--font-secondary);

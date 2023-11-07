@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import {
   StyledEmailInput,
@@ -10,72 +10,68 @@ import Icon from "../../../assets/svgs/Icon";
 import Typography from "../../../styles/Typography";
 
 type InputVariants = "default" | "email";
+type InputEvent = React.ChangeEvent<HTMLInputElement>;
 type InputProps = {
-  type?: InputVariants;
   placeholder: string;
   inputValue: string;
   setInputValue: (value: string) => void;
+  type?: InputVariants;
   errorMessage?: string;
 };
 
 /**
- * @prop `type` [string : "default" | "email"] - type of the input;
- * @prop `placeholder` [string] - placeholder for the input;
+ * @prop `placeholder` [string] - placeholder for the input. Default value : empty string;
  * @prop `inputValue` [string: "normal" | "outline"] - state of the input;
  * @prop `setInputValue` [should not be passed] - function to set the state;
- * @prop `errorMessage` [string: "normal" | "outline"] - error message only for email type input;
+ * @prop `type` [string : "default" | "email"] - type of the input. Default value : `default`;
+ * @prop `errorMessage` [string: "normal" | "outline"] - error message only for email type input. Default value : `Error`;
  */
 
 function Input({
-  type = "default",
-  placeholder = "Type...",
+  placeholder = "",
   inputValue,
   setInputValue,
+  type = "default",
   errorMessage = "Error",
 }: InputProps) {
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const isEmail = useMemo(() => type === "email", [type]);
+  const handleInputChange = (e: InputEvent) => {
     setInputValue(e.target.value);
+    if (isEmail) setHasError(!isValidEmail(e.target.value));
   };
 
-  const [error, setError] = useState<boolean>(false);
-  function isValidEmail(input: string): boolean {
-    return /\S+@\S+\.\S+/.test(input);
+  const [hasError, setHasError] = useState(false);
+  function isValidEmail(input: string) {
+    return !input || /\S+@\S+\.\S+/.test(input);
   }
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    if (!isValidEmail(e.target.value)) {
-      setError(true);
-    } else {
-      setError(false);
-    }
 
-    setInputValue(e.target.value);
-  };
-  const handleButtonClick = (): void => {
-    setInputValue("");
-  };
-  return type === "default" ? (
+  const input = (
     <StyledInput
       placeholder={placeholder}
       value={inputValue}
       onChange={handleInputChange}
     />
-  ) : (
-    <StyledEmailInput className={error && inputValue.length > 0 ? "error" : ""}>
+  );
+
+  const handleButtonClick = () => {
+    setInputValue("");
+    setHasError(false);
+  };
+
+  return isEmail ? (
+    <StyledEmailInput hasError={hasError}>
       <StyledEmailField>
-        <StyledInput
-          placeholder={placeholder}
-          value={inputValue}
-          onChange={handleEmailChange}
-        />
+        {input}
         <IconButton onClick={handleButtonClick}>
           <Icon name="close-circle" width="1.7rem" height="1.7rem" />
         </IconButton>
       </StyledEmailField>
-
       <Typography tag="span" tagStyle="label2">
         {errorMessage}
       </Typography>
     </StyledEmailInput>
+  ) : (
+    input
   );
 }
 
