@@ -1,11 +1,18 @@
-import { FC, HTMLProps } from "react";
+import { HTMLProps } from "react";
 import styled from "styled-components";
+import { IStyledComponent } from "styled-components";
 
 import { SwitchVariants } from "./Switch";
 
 export type SwitchStylesProperties = {
-  Rail: FC<{ $checked: boolean } & HTMLProps<HTMLLabelElement>>;
-  Knob: FC<{ $checked: boolean } & HTMLProps<HTMLDivElement>>;
+  Rail: IStyledComponent<
+    "web",
+    { $checked: boolean } & HTMLProps<HTMLLabelElement>
+  >;
+  Knob: IStyledComponent<
+    "web",
+    { $checked: boolean } & HTMLProps<HTMLDivElement>
+  >;
 };
 
 export const SwitchStyles: Record<SwitchVariants, SwitchStylesProperties> = {
