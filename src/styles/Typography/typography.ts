@@ -5,11 +5,6 @@ const subtitle = css`
   line-height: 2.4rem;
   letter-spacing: 0.15px;
 `;
-const label = css`
-  font-family: var(--font-secondary);
-  line-height: 2.4rem;
-  letter-spacing: 0.15px;
-`;
 
 const typography = {
   heading1: css`
@@ -51,12 +46,12 @@ const typography = {
     font-weight: 400;
   `,
   label1: css`
-    ${label}
+    ${subtitle}
     font-size: 1.4rem;
     font-weight: 700;
   `,
   label2: css`
-    ${label}
+    ${subtitle}
     font-size: 1.2rem;
     font-weight: 600;
   `,
