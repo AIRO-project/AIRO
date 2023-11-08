@@ -58,7 +58,7 @@ type ButtonProps = {
  * @prop `width` [string: any valid `css` width unit] - the width of the button. Default value: `100%`;
  * @prop `type` [string: "normal" | "outline"] - the type of the button. Default value: `normal`;
  * @prop `className` [should not be passed] - this is added to make extending styles of the `Button` component possible, see https://styled-components.com/docs/basics#styling-any-component for more info;
- * @prop `tabIndex` [number] - tabIndex of the Button, is useful when we wanting to disable the button from accessibility (eg: tabIndex={-1}). 
+ * @prop `tabIndex` [number] - tabIndex of the Button, is useful when we want to disable the button from accessibility (eg: tabIndex={-1}). 
  */
 function Button({
   className,

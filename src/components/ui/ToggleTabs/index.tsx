@@ -16,7 +16,7 @@ const Container = styled.form<{ $width: string }>`
  * @prop `width` [string: any valid `css` width unit] - the width of the ToggleTab. Default value: `100%`;
  * @prop `option` [string: useState's state] - the state where the selected option should be kept in;
  * @prop `seOption` [function: useState's setState function] - the setState function of the option state;
- * @prop `defaultOption` [number] - the index of the tab that should be set as selected by default. Default value: 1.
+ * @prop `defaultOption` [number] - the index of the tab that should be set as selected by default. Default value: 0.
  *
  */
 function ToggleTabs({
