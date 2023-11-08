@@ -12,4 +12,5 @@ export type Icons =
   | "filter"
   | "search"
   | "options"
-  | "thick";
+  | "thick"
+  | "close-circle";

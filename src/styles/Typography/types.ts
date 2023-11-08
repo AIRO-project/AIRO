@@ -8,6 +8,7 @@ export type TagStyleVariants =
   | "subtitle1"
   | "subtitle2"
   | "subtitle3"
+  | "subtitle4"
   | "body"
   | "label1"
   | "label2"
