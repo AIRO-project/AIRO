@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import typography from "../../../styles/Typography/typography";
 
 type StyledEmailInputProps = {
-  hasError: boolean;
+  $hasError: boolean;
 };
 
 export const StyledInput = styled.input`
@@ -53,7 +53,7 @@ export const StyledEmailInput = styled.div<StyledEmailInputProps>`
   }
 
   ${(props) =>
-    props.hasError &&
+    props.$hasError &&
     css`
       ${IconButton} {
         display: block;

@@ -59,7 +59,7 @@ function Input({
   };
 
   return isEmail ? (
-    <StyledEmailInput hasError={hasError}>
+    <StyledEmailInput $hasError={hasError}>
       <StyledEmailField>
         {input}
         <IconButton onClick={handleButtonClick}>
