@@ -23,7 +23,7 @@ const StyledLabel = styled.label`
 
 type CheckboxProps = {
   value: string;
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   children?: ReactNode;
   checked?: boolean;
   styledAs?: "checkbox" | "switch";
@@ -39,8 +39,8 @@ type CheckboxProps = {
  */
 function Checkbox({
   value,
-  handleChange,
   SwitchStyles,
+  handleChange = () => {},
   checked = false,
   color = "var(--color-white)",
   styledAs = "checkbox",
