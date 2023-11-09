@@ -51,7 +51,7 @@ type UserProps = {
  * @prop `name` [string] - the user's name;
  * @prop `email` [string] - the user's email;
  * @prop `onClick` [function] - onClick event handler function;
- * @porp `imgAlt` [string];
+ * @prop `imgAlt` [string];
  */
 function User({ type, imgSrc, name, email, onClick, imgAlt = "" }: UserProps) {
   return (
