@@ -59,7 +59,8 @@ function Tab({ tab, name, checked }: TabProps) {
         name={name}
         ref={inputRef}
         value={tab.value}
-        defaultChecked={checked}
+        checked={checked}
+        readOnly
       />
       <StyledButton tabIndex={-1}>{tab.label}</StyledButton>
     </StyledLabel>
