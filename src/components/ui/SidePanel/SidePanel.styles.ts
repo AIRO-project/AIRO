@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from "styled-components";
+import styled from "styled-components";
 
 export const StyledSidePanel = styled.div<{ $isOpen: boolean }>`
   position: absolute;
@@ -7,34 +7,9 @@ export const StyledSidePanel = styled.div<{ $isOpen: boolean }>`
   background-color: var(--color-grey-dark-1);
   height: 100%;
   top: 0;
-  right: -40rem;
-  animation: ${({ $isOpen }) =>
-      $isOpen
-        ? css`
-            ${slideIn} 0.3s ease-in-out
-          `
-        : css`
-            ${slideOut} 0.2s ease-out
-          `}
-    forwards;
-`;
-
-const slideIn = keyframes`
-  from {
-    right: -40rem;
-  }
-  to {
-    right: 0;
-  }
-`;
-
-const slideOut = keyframes`
-  from {
-    right:  0 ;
-  }
-  to {
-    right: -40rem;
-  }
+  right: 0;
+  transform: translateX(${({ $isOpen }) => ($isOpen ? "0" : "40rem")});
+  transition: transform 0.3s ease-in-out;
 `;
 
 export const StyledPanelButton = styled.button`
