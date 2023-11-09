@@ -16,6 +16,7 @@ const globalReset = css`
   body {
     font-family: var(--font-primary);
     -webkit-font-smoothing: antialiased;
+    overflow: hidden;
   }
 
   img,
