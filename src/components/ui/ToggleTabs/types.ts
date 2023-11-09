@@ -7,15 +7,14 @@ export type Tab = {
 
 export type TabProps = {
   tab: Tab;
-  name: string;
   checked: boolean;
+  onClick: (value: string) => void;
 };
 
 export type ToggleTabsProps = {
-  name: string;
   tabs: Tab[];
-  option: string | undefined;
-  setOption: Dispatch<SetStateAction<string | undefined>>;
-  defaultOption?: number;
+  currentTab: string | undefined;
+  setTab: Dispatch<SetStateAction<string | undefined>>;
+  defaultTab?: number;
   width?: string;
 };
