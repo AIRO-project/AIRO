@@ -9,6 +9,7 @@ const globalReset = css`
 
   * {
     margin: 0;
+    padding: 0;
   }
   :root {
     font-size: 62.5%;
