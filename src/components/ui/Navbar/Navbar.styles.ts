@@ -23,12 +23,13 @@ export const StyledNavbarLogo = styled.div`
 `;
 
 export const StyledNavbarActions = styled.div`
+  display: flex;
+  align-items: center;
+
   span {
     color: var(--color-grey-light-1);
     margin-right: 0.6rem;
   }
-  display: flex;
-  align-items: center;
 `;
 
 export const StyledSearchBar = styled.div`
