@@ -20,7 +20,9 @@ function About(props: Props) {
       <StyledTopBar>
         <StyledAboutLogo>
           <img src={Logo} />
-          <Typography tagStyle="label3">by Grid Dynamics</Typography>
+          <Typography tag="span" tagStyle="label3">
+            by Grid Dynamics
+          </Typography>
         </StyledAboutLogo>
 
         <StyledShareButton href="https://github.com/AIRO-project/AIRO">
