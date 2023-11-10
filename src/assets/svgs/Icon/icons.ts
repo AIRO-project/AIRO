@@ -13,4 +13,6 @@ export type Icons =
   | "search"
   | "options"
   | "thick"
-  | "close-circle";
+  | "close-circle"
+  | "privacy"
+  | "sign-out";
