@@ -7,16 +7,16 @@ export const StyledSignInView = styled.section`
   text-align: center;
   color: var(--color-white);
 
-  & h1 {
+  h1 {
     align-self: flex-start;
   }
 
-  & img {
+  img {
     width: 15rem;
     margin: 10rem 0 3.2rem 0;
   }
 
-  & p {
+  p {
     max-width: 25.8rem;
     margin-bottom: 14rem;
   }
