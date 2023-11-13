@@ -11,7 +11,13 @@ import {
 import Icon from "/src/assets/svgs/Icon";
 import Typography from "/src/styles/Typography";
 
-const devices = [
+type Device = {
+  type: "gateway" | "device";
+  name: string;
+  address: string;
+};
+
+const devices: Device[] = [
   {
     type: "gateway",
     name: "Gateway 1",

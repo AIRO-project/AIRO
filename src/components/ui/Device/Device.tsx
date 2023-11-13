@@ -8,7 +8,7 @@ import Icon from "/src/assets/svgs/Icon";
 import Typography from "/src/styles/Typography";
 
 type Props = {
-  type: string;
+  type: "gateway" | "device";
   name: string;
   address: string;
 };
@@ -17,7 +17,7 @@ function Device({ type, name, address }: Props) {
   return (
     <StyledDevice>
       <StyledDeviceIcon>
-        <Icon name={type === "device" ? "device" : "gateway"} />
+        <Icon name={type} />
       </StyledDeviceIcon>
 
       <StyledDeviceInfo>
