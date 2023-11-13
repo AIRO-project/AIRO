@@ -1,3 +1,5 @@
+import { useDispatch } from "react-redux";
+
 import {
   StyledNavbar,
   StyledNavbarActions,
@@ -12,7 +14,15 @@ import Typography from "../../../styles/Typography";
 import Switch from "../../form/Switch/Switch";
 import Button from "../Button";
 
+import { toggleSidePanel } from "/src/state/slices/sidePanelSlice";
+
 function Navbar() {
+  const dispatch = useDispatch();
+
+  const handleToggleSidePanel = () => {
+    dispatch(toggleSidePanel());
+  };
+
   return (
     <StyledNavbar>
       <StyledNavbarLogo>
@@ -43,7 +53,8 @@ function Navbar() {
           </StyledSearchButton>
         </StyledSearchBar>
       </StyledNavbarActions>
-      <Button width="120px" onClick={() => {}}>
+
+      <Button width="120px" onClick={handleToggleSidePanel}>
         Sign in
       </Button>
     </StyledNavbar>
