@@ -1,3 +1,5 @@
+import { useDispatch } from "react-redux";
+
 import {
   StyledNavbar,
   StyledNavbarActions,
@@ -6,9 +8,6 @@ import {
   StyledSearchBarInput,
   StyledSearchButton,
 } from "./Navbar.styles";
-
-import { useDispatch } from "react-redux";
-
 import Icon from "../../../assets/svgs/Icon";
 import Logo from "../../../assets/svgs/airo-logo.svg";
 import Typography from "../../../styles/Typography";

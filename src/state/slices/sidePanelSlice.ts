@@ -1,4 +1,3 @@
-// src/features/sidePanelSlice.ts
 import { createSlice } from "@reduxjs/toolkit";
 
 interface SidePanelState {
