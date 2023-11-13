@@ -7,7 +7,7 @@ import globalReset from "./reset";
 import shadows from "./shadows";
 
 export default createGlobalStyle`
-    ${fontFaces}
+    /* ${fontFaces} */
     ${fonts}
     ${colors}
     ${globalReset}
