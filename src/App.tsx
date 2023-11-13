@@ -1,7 +1,5 @@
-import Navbar from "./components/ui/Navbar/Navbar";
-
 function App() {
-  return <Navbar />;
+  return <div>AIRO</div>;
 }
 
 export default App;
