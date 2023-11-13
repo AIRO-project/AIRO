@@ -1,20 +1,25 @@
-import { ReactNode } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import { StyledPanelButton, StyledSidePanel } from "./SidePanel.styles";
 import Icon from "../../../assets/svgs/Icon";
+import { toggleSidePanel } from "../../../state/slices/sidePanelSlice";
+import SignInView from "../../panel-views/SignInView/SignInView";
 
-type Props = {
-  children: ReactNode;
-  isOpen: boolean;
-  closePanel: () => void;
-};
+import { RootState } from "/src/state/store";
 
-function SidePanel(props: Props) {
+function SidePanel() {
+  const isOpen = useSelector((state: RootState) => state.sidePanel.isOpen);
+  const dispatch = useDispatch();
+
+  const handleClose = () => {
+    dispatch(toggleSidePanel());
+  };
+
   return (
-    <StyledSidePanel $isOpen={props.isOpen}>
-      {props.children}
-      
-      <StyledPanelButton onClick={props.closePanel}>
+    <StyledSidePanel $isOpen={isOpen}>
+      <SignInView />
+
+      <StyledPanelButton onClick={handleClose}>
         <Icon
           name="close"
           width="1.6rem"
