@@ -12,7 +12,7 @@ export type Icons =
   | "filter"
   | "search"
   | "options"
-  | "thick"
+  | "tick"
   | "close-circle"
   | "privacy"
   | "sign-out";
