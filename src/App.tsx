@@ -6,7 +6,6 @@ import SidePanel from "./components/ui/SidePanel/SidePanel";
 const StyledMap = styled.div`
   position: relative;
   height: calc(100vh - 6rem);
-  background-color: grey;
 `;
 
 function App() {
