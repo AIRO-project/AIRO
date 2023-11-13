@@ -91,7 +91,7 @@
     <path d="M9.84615 7.84615C9.84615 8.86576 9.0196 9.69231 8 9.69231C6.9804 9.69231 6.15385 8.86576 6.15385 7.84615C6.15385 6.82655 6.9804 6 8 6C9.0196 6 9.84615 6.82655 9.84615 7.84615Z"></path>
     <path d="M16 7.84615C16 8.86576 15.1734 9.69231 14.1538 9.69231C13.1342 9.69231 12.3077 8.86576 12.3077 7.84615C12.3077 6.82655 13.1342 6 14.1538 6C15.1734 6 16 6.82655 16 7.84615Z"></path>
   </symbol>
-  <symbol fill='none' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="thick">
+  <symbol fill='none' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="tick">
     <path d="M1 9.23548L6.6 13.4872L15 2" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" ></path>
   </symbol>
   <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17" id="close-circle">
