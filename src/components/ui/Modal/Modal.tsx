@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { createPortal } from "react-dom";
 
 import {
   StyledModalButton,
@@ -18,7 +19,7 @@ type Props = {
  */
 
 function Modal({ closeModal, children }: Props) {
-  return (
+  return createPortal(
     <StyledModalOverlay onClick={closeModal}>
       <StyledModalContent onClick={(e) => e.stopPropagation()}>
         {children}
@@ -31,7 +32,8 @@ function Modal({ closeModal, children }: Props) {
           />
         </StyledModalButton>
       </StyledModalContent>
-    </StyledModalOverlay>
+    </StyledModalOverlay>,
+    document.getElementById("root")!
   );
 }
 
