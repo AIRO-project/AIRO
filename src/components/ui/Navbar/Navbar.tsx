@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   StyledNavbar,
@@ -15,9 +15,13 @@ import Switch from "../../form/Switch/Switch";
 import Button from "../Button";
 
 import { toggleSidePanel } from "/src/state/slices/sidePanelSlice";
+import { RootState } from "/src/state/store";
+
+import User from "../User";
 
 function Navbar() {
   const dispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.user);
 
   const handleToggleSidePanel = () => {
     dispatch(toggleSidePanel());
@@ -54,9 +58,19 @@ function Navbar() {
         </StyledSearchBar>
       </StyledNavbarActions>
 
-      <Button width="120px" onClick={handleToggleSidePanel}>
-        Sign in
-      </Button>
+      {user.isLoggedIn ? (
+        <User
+          type="logged-in"
+          imgSrc={user.userImg!}
+          name={user.userName!}
+          email={user.userEmail!}
+          onClick={handleToggleSidePanel}
+        />
+      ) : (
+        <Button width="120px" onClick={handleToggleSidePanel}>
+          Sign in
+        </Button>
+      )}
     </StyledNavbar>
   );
 }
