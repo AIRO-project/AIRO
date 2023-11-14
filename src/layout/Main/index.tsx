@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-import Map from "/src/components/map";
+import Map from "/src/components/Map";
 import SidePanel from "/src/components/ui/SidePanel/SidePanel";
 
 const StyledMap = styled.main`

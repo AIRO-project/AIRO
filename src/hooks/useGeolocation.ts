@@ -7,7 +7,7 @@ interface Location {
 }
 
 function useGeolocation(): Location {
-  const [location, setLocation] = useState<Location>({
+  const [coordinates, setCoordinates] = useState<Location>({
     latitude: null,
     longitude: null,
     error: null,
@@ -15,7 +15,7 @@ function useGeolocation(): Location {
 
   useEffect(() => {
     const handleSuccess = (position: GeolocationPosition) => {
-      setLocation({
+      setCoordinates({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
         error: null,
@@ -23,7 +23,7 @@ function useGeolocation(): Location {
     };
 
     const handleError = (error: GeolocationPositionError) => {
-      setLocation({
+      setCoordinates({
         latitude: null,
         longitude: null,
         error: error.message || "Error retrieving location",
@@ -43,7 +43,7 @@ function useGeolocation(): Location {
         options
       );
     } else {
-      setLocation({
+      setCoordinates({
         latitude: null,
         longitude: null,
         error: "Geolocation is not supported by your browser",
@@ -51,7 +51,7 @@ function useGeolocation(): Location {
     }
   }, []);
 
-  return location;
+  return coordinates;
 }
 
 export default useGeolocation;

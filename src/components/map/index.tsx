@@ -22,12 +22,13 @@ function Map() {
     googleMapsApiKey: import.meta.env.VITE_APP_MAP_API_KEY,
   });
 
-  const userLocation = useGeolocation();
+  const { longitude: lng, latitude: lat } = useGeolocation();
+  const canRenderMap = isLoaded && lng && lat;
 
-  return isLoaded && userLocation.latitude && userLocation.longitude ? (
+  return canRenderMap ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={{ lat: userLocation.latitude, lng: userLocation.longitude }}
+      center={{ lat, lng }}
       zoom={15}
       options={mapOptions}
     ></GoogleMap>
