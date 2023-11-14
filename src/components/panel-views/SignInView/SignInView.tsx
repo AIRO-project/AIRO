@@ -9,6 +9,8 @@ import About from "../../modals/About/About";
 import Button from "../../ui/Button";
 import Modal from "../../ui/Modal/Modal";
 
+import { handleSignIn } from "/src/auth/handleSignIn";
+
 function SignInView() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -28,7 +30,9 @@ function SignInView() {
         personal devices and recieve notifications.
       </Typography>
 
-      <Button width="25.8rem">Sign In</Button>
+      <Button width="25.8rem" onClick={handleSignIn}>
+        Sign In
+      </Button>
 
       <StyledAboutButton onClick={toggleModal}>
         <Typography tag="span" tagStyle="subtitle1">
