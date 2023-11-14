@@ -1,7 +1,10 @@
+import Navbar from "./components/layout/Navbar/";
+import SidePanel from "./components/ui/SidePanel/SidePanel";
+import useAuthentication from "./hooks/useAuthentication";
 import Main from "./layout/Main";
-import Navbar from "./layout/Navbar/Navbar";
 
 function App() {
+  useAuthentication();
   return (
     <>
       <Navbar />
