@@ -8,12 +8,12 @@ import {
   StyledSearchBarInput,
   StyledSearchButton,
 } from "./Navbar.styles";
-import Icon from "../../../assets/svgs/Icon";
-import Logo from "../../../assets/svgs/airo-logo.svg";
-import Typography from "../../../styles/Typography";
-import Switch from "../../form/Switch/Switch";
-import Button from "../Button";
 
+import Icon from "/src/assets/svgs/Icon";
+import Logo from "/src/assets/svgs/airo-logo.svg";
+import Typography from "/src/styles/Typography";
+import Switch from "/src/components/form/Switch/Switch";
+import Button from "/src/components/ui/Button";
 import { toggleSidePanel } from "/src/state/slices/sidePanelSlice";
 
 function Navbar() {
