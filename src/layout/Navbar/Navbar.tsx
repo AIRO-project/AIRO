@@ -16,8 +16,7 @@ import Switch from "/src/components/form/Switch/Switch";
 import Button from "/src/components/ui/Button";
 import { toggleSidePanel } from "/src/state/slices/sidePanelSlice";
 import { RootState } from "/src/state/store";
-
-import User from "../User";
+import User from "/src/components/ui/User";
 
 function Navbar() {
   const dispatch = useDispatch();
