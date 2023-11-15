@@ -3,11 +3,11 @@ import { useSelector } from "react-redux";
 import Device from "../../ui/Device/Device";
 import User from "../../ui/User";
 import {
-  SettingsButton,
+  AccountButton,
+  StyledAccountView,
   StyledAddNewButton,
   StyledButtonGroup,
   StyledDevicesList,
-  StyledSettingsView,
 } from "./AccountView.styles";
 
 import Icon from "/src/assets/svgs/Icon";
@@ -39,11 +39,11 @@ const devices: Device[] = [
   },
 ];
 
-function SettingsView() {
+function AccountView() {
   const user = useSelector((state: RootState) => state.user);
 
   return (
-    <StyledSettingsView>
+    <StyledAccountView>
       <Typography tag="h1" tagStyle="heading1">
         Account
       </Typography>
@@ -75,22 +75,22 @@ function SettingsView() {
       </StyledAddNewButton>
 
       <StyledButtonGroup>
-        <SettingsButton>
+        <AccountButton>
           <Icon name="privacy" height="2.4rem" width="2.4rem" />
           <Typography tag="p" tagStyle="subtitle4">
             Privacy
           </Typography>
-        </SettingsButton>
+        </AccountButton>
 
-        <SettingsButton onClick={handleSignOut}>
+        <AccountButton onClick={handleSignOut}>
           <Icon name="sign-out" height="2.4rem" width="2.4rem" />
           <Typography tag="p" tagStyle="subtitle4">
             Sign Out
           </Typography>
-        </SettingsButton>
+        </AccountButton>
       </StyledButtonGroup>
-    </StyledSettingsView>
+    </StyledAccountView>
   );
 }
 
-export default SettingsView;
+export default AccountView;

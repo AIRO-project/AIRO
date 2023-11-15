@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { StyledAboutButton, StyledSignInView } from "./SettingsView.styles";
+import { StyledAboutButton, StyledSettingsView } from "./SettingsView.styles";
 
 import Typography from "/src/styles/Typography";
 
@@ -11,7 +11,7 @@ import Modal from "../../ui/Modal/Modal";
 
 import { handleSignIn } from "/src/auth/handleSignIn";
 
-function SignInView() {
+function SettingsView() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   function toggleModal() {
@@ -19,7 +19,7 @@ function SignInView() {
   }
 
   return (
-    <StyledSignInView>
+    <StyledSettingsView>
       <Typography tag="h1" tagStyle="heading1">
         Settings
       </Typography>
@@ -45,8 +45,8 @@ function SignInView() {
           <About buttonHandler={toggleModal} />
         </Modal>
       )}
-    </StyledSignInView>
+    </StyledSettingsView>
   );
 }
 
-export default SignInView;
+export default SettingsView;

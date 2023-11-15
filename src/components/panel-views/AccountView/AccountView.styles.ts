@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import Button from "../../ui/Button";
 
-export const StyledSettingsView = styled.section`
+export const StyledAccountView = styled.section`
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -40,7 +40,7 @@ export const StyledButtonGroup = styled.div`
   margin-top: auto;
 `;
 
-export const SettingsButton = styled(Button)`
+export const AccountButton = styled(Button)`
   display: flex;
   flex: 1;
   align-items: center;
