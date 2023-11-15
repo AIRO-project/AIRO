@@ -11,10 +11,17 @@ export const StyledAccountView = styled.section`
 `;
 
 export const StyledDevicesList = styled.div`
-  overflow: scroll;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 `;
 
 export const StyledAddNewButton = styled.button`
