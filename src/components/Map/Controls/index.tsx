@@ -64,11 +64,11 @@ function MapControls() {
   return (
     <Controls $isOpen={sidePanelIsOpen}>
       <ZoomControls>
-        <StyledButton onClick={handleZoomOut}>
-          <Icon name="zoom-out" />
-        </StyledButton>
         <StyledButton onClick={handleZoomIn}>
           <Icon name="zoom-in" />
+        </StyledButton>
+        <StyledButton onClick={handleZoomOut}>
+          <Icon name="zoom-out" />
         </StyledButton>
       </ZoomControls>
       <StyledButton onClick={handleCenterCurrLocation}>
