@@ -33,7 +33,7 @@ export const StyledAddNewButton = styled.button`
 `;
 
 export const StyledButtonGroup = styled.div`
-  height: 6.2rem;
+  min-height: 6rem;
   display: flex;
   border-radius: 0.2rem;
   overflow: hidden;

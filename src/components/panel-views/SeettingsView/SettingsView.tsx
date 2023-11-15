@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { StyledAboutButton, StyledSignInView } from "./SignInView.styles";
+import { StyledAboutButton, StyledSignInView } from "./SettingsView.styles";
 
 import Typography from "/src/styles/Typography";
 
@@ -21,7 +21,7 @@ function SignInView() {
   return (
     <StyledSignInView>
       <Typography tag="h1" tagStyle="heading1">
-        Sign In
+        Settings
       </Typography>
       <img src={SignIn} alt="sign in image" />
 

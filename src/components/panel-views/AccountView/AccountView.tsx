@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 import Device from "../../ui/Device/Device";
 import User from "../../ui/User";
 import {
@@ -6,10 +8,12 @@ import {
   StyledButtonGroup,
   StyledDevicesList,
   StyledSettingsView,
-} from "./SettingsView.styles";
+} from "./AccountView.styles";
 
 import Icon from "/src/assets/svgs/Icon";
+import { handleSignOut } from "/src/auth/handleSignOut";
 import Typography from "/src/styles/Typography";
+import { RootState } from "/src/state/store";
 
 type Device = {
   type: "gateway" | "device";
@@ -36,17 +40,19 @@ const devices: Device[] = [
 ];
 
 function SettingsView() {
+  const user = useSelector((state: RootState) => state.user);
+
   return (
     <StyledSettingsView>
       <Typography tag="h1" tagStyle="heading1">
-        Settings
+        Account
       </Typography>
 
       <User
         type="info"
-        name="Galina Schshirska"
-        email="@gschchirska"
-        imgSrc="https://an-talla.co.uk/wp-content/uploads/2022/09/Santa-social-Edited.png"
+        name={user.userName!}
+        email={user.userEmail!}
+        imgSrc={user.userImg!}
       />
 
       <StyledDevicesList>
@@ -76,7 +82,7 @@ function SettingsView() {
           </Typography>
         </SettingsButton>
 
-        <SettingsButton>
+        <SettingsButton onClick={handleSignOut}>
           <Icon name="sign-out" height="2.4rem" width="2.4rem" />
           <Typography tag="p" tagStyle="subtitle4">
             Sign Out
