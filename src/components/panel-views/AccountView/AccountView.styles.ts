@@ -49,4 +49,10 @@ export const AccountButton = styled(Button)`
   text-decoration: none;
   color: var(--color-white);
   gap: 2.2rem;
+  height: 100%;
+`;
+
+export const AccountLink = styled.a`
+  flex: 1;
+  text-decoration: none;
 `;

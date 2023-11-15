@@ -4,6 +4,7 @@ import Device from "../../ui/Device/Device";
 import User from "../../ui/User";
 import {
   AccountButton,
+  AccountLink,
   StyledAccountView,
   StyledAddNewButton,
   StyledButtonGroup,
@@ -75,12 +76,14 @@ function AccountView() {
       </StyledAddNewButton>
 
       <StyledButtonGroup>
-        <AccountButton>
-          <Icon name="privacy" height="2.4rem" width="2.4rem" />
-          <Typography tag="p" tagStyle="subtitle4">
-            Privacy
-          </Typography>
-        </AccountButton>
+        <AccountLink href="https://gdpr-info.eu/" target="_blank">
+          <AccountButton>
+            <Icon name="privacy" height="2.4rem" width="2.4rem" />
+            <Typography tag="p" tagStyle="subtitle4">
+              Privacy
+            </Typography>
+          </AccountButton>
+        </AccountLink>
 
         <AccountButton onClick={handleSignOut}>
           <Icon name="sign-out" height="2.4rem" width="2.4rem" />
