@@ -4,6 +4,7 @@ import Navbar from "./layout/Navbar/Navbar";
 
 function App() {
   useAuthentication();
+
   return (
     <>
       <Navbar />

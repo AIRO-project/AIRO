@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { auth } from "../config/firebase";
-import { login, logout } from "../state/slices/userSlice";
+import { login } from "../state/slices/userSlice";
 
 const useAuthentication = () => {
   const dispatch = useDispatch();
@@ -18,8 +18,6 @@ const useAuthentication = () => {
             userEmail: userAuth.email,
           })
         );
-      } else {
-        dispatch(logout());
       }
     });
 
