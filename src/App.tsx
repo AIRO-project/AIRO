@@ -3,15 +3,13 @@ import Main from "./layout/Main";
 import Navbar from "./layout/Navbar/Navbar";
 
 function App() {
-  const { authStatus } = useAuthentication();
+  useAuthentication();
 
   return (
-    authStatus !== "pending" && (
-      <>
-        <Navbar />
-        <Main />
-      </>
-    )
+    <>
+      <Navbar />
+      <Main />
+    </>
   );
 }
 
