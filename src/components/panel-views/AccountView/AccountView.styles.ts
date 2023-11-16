@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import Button from "../../ui/Button";
 
-export const StyledSettingsView = styled.section`
+export const StyledAccountView = styled.section`
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -11,10 +11,17 @@ export const StyledSettingsView = styled.section`
 `;
 
 export const StyledDevicesList = styled.div`
-  overflow: scroll;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 `;
 
 export const StyledAddNewButton = styled.button`
@@ -33,14 +40,14 @@ export const StyledAddNewButton = styled.button`
 `;
 
 export const StyledButtonGroup = styled.div`
-  height: 6.2rem;
+  min-height: 6rem;
   display: flex;
   border-radius: 0.2rem;
   overflow: hidden;
   margin-top: auto;
 `;
 
-export const SettingsButton = styled(Button)`
+export const AccountButton = styled(Button)`
   display: flex;
   flex: 1;
   align-items: center;
@@ -49,4 +56,10 @@ export const SettingsButton = styled(Button)`
   text-decoration: none;
   color: var(--color-white);
   gap: 2.2rem;
+  height: 100%;
+`;
+
+export const AccountLink = styled.a`
+  flex: 1;
+  text-decoration: none;
 `;

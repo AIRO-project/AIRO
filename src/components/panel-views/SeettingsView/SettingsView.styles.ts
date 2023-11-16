@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledSignInView = styled.section`
+export const StyledSettingsView = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
