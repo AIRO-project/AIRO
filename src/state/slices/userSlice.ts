@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { RootState } from "../store";
+
 type IUser = {
   isLoggedIn: boolean;
   userName: string | null;
@@ -31,6 +33,8 @@ export const userSlice = createSlice({
     },
   },
 });
+
+export const selectUser = (state: RootState) => state.user;
 
 export const { login, logout } = userSlice.actions;
 export default userSlice.reducer;

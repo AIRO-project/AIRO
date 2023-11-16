@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 import { styled } from "styled-components";
 
 import useGeolocation from "/src/hooks/useGeolocation";
-import { RootState } from "/src/state/store";
 import Icon from "/src/assets/svgs/Icon";
 import Button from "/src/components/ui/Button";
+import { selectSidePanelIsOpen } from "/src/state/slices/sidePanelSlice";
 
 const Controls = styled.div<{ $isOpen: boolean }>`
   position: absolute;
@@ -36,9 +36,7 @@ const ZoomControls = styled.div`
 
 function MapControls() {
   const map = useGoogleMap();
-  const sidePanelIsOpen = useSelector(
-    (state: RootState) => state.sidePanel.isOpen
-  );
+  const sidePanelIsOpen = useSelector(selectSidePanelIsOpen);
   const { longitude: lng, latitude: lat } = useGeolocation();
 
   const handleZoomIn = () => {

@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { RootState } from "../store";
+
 interface SidePanelState {
   isOpen: boolean;
 }
@@ -18,6 +20,9 @@ const sidePanelSlice = createSlice({
     },
   },
 });
+
+export const selectSidePanelIsOpen = (state: RootState) =>
+  state.sidePanel.isOpen;
 
 export const { toggleSidePanel } = sidePanelSlice.actions;
 export default sidePanelSlice.reducer;

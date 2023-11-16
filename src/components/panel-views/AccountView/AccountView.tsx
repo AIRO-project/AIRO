@@ -14,7 +14,7 @@ import {
 import Icon from "/src/assets/svgs/Icon";
 import { handleSignOut } from "/src/auth/handleSignOut";
 import Typography from "/src/styles/Typography";
-import { RootState } from "/src/state/store";
+import { selectUser } from "/src/state/slices/userSlice";
 
 type Device = {
   type: "gateway" | "device";
@@ -41,7 +41,7 @@ const devices: Device[] = [
 ];
 
 function AccountView() {
-  const user = useSelector((state: RootState) => state.user);
+  const user = useSelector(selectUser);
 
   return (
     <StyledAccountView>
