@@ -15,4 +15,7 @@ export type Icons =
   | "tick"
   | "close-circle"
   | "privacy"
-  | "sign-out";
+  | "sign-out"
+  | "locator"
+  | "zoom-in"
+  | "zoom-out";

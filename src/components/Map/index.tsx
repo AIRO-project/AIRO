@@ -2,6 +2,7 @@ import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 
 import useGeolocation from "/src/hooks/useGeolocation";
 
+import MapControls from "./Controls";
 import mapStyles from "./map-styles";
 
 const containerStyle = {
@@ -14,6 +15,7 @@ const mapOptions = {
   mapTypeControl: false,
   streetViewControl: false,
   fullscreenControl: false,
+  zoomControl: false,
 };
 
 function Map() {
@@ -21,8 +23,8 @@ function Map() {
     id: "google-maps",
     googleMapsApiKey: import.meta.env.VITE_APP_MAP_API_KEY,
   });
-
   const { longitude: lng, latitude: lat } = useGeolocation();
+
   const canRenderMap = isLoaded && lng && lat;
 
   return canRenderMap ? (
@@ -31,7 +33,9 @@ function Map() {
       center={{ lat, lng }}
       zoom={15}
       options={mapOptions}
-    ></GoogleMap>
+    >
+      <MapControls />
+    </GoogleMap>
   ) : (
     <></>
   );

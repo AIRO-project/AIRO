@@ -15,12 +15,12 @@ import Typography from "/src/styles/Typography";
 import Switch from "/src/components/form/Switch/Switch";
 import Button from "/src/components/ui/Button";
 import { toggleSidePanel } from "/src/state/slices/sidePanelSlice";
-import { RootState } from "/src/state/store";
 import User from "/src/components/ui/User";
+import { selectUser } from "/src/state/slices/userSlice";
 
 function Navbar() {
   const dispatch = useDispatch();
-  const user = useSelector((state: RootState) => state.user);
+  const user = useSelector(selectUser);
 
   const handleToggleSidePanel = () => {
     dispatch(toggleSidePanel());
