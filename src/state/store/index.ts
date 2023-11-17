@@ -3,12 +3,14 @@ import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
 
+import notificationReducer from "../slices/notificationSlice";
 import sidePanelReducer from "../slices/sidePanelSlice";
 import userReducer from "../slices/userSlice";
 
 const rootReducer = combineReducers({
   sidePanel: sidePanelReducer,
   user: userReducer,
+  notification: notificationReducer,
 });
 
 const persistConfig = {
