@@ -18,4 +18,5 @@ export type Icons =
   | "sign-out"
   | "locator"
   | "zoom-in"
-  | "zoom-out";
+  | "zoom-out"
+  | "location";
