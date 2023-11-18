@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   FormButtons,
@@ -15,13 +15,14 @@ import Input from "/src/components/form/Input/Input";
 import useGeolocation from "/src/hooks/useGeolocation";
 import Icon from "/src/assets/svgs/Icon";
 import SearchLocation from "/src/components/form/SearchLocation/SearchLocation";
+import { getAddressFromCoords } from "/src/utils/helpers";
 
 type Props = {
   type: "create" | "edit";
   closeForm: () => void;
 };
 
-type Coordinates = {
+export type Coordinates = {
   lat: number;
   lng: number;
 };
@@ -30,47 +31,31 @@ function DeviceForm(props: Props) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
-
   const [address, setAddress] = useState("");
   const [coordinates, setCoordinates] = useState<Coordinates>();
 
   const coords = useGeolocation();
-  address || locateUser();
 
-  function locateUser() {
-    if (coords.latitude) {
-      getAddressFromCoords();
-    }
-  }
-
-  async function getAddressFromCoords() {
-    try {
-      const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${
-        coords.latitude
-      },${coords.longitude}&key=${import.meta.env.VITE_APP_MAP_API_KEY}`;
-
-      const response = await fetch(apiUrl);
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+  useEffect(() => {
+    async function fetchAddress() {
+      if (coords.latitude && coords.longitude) {
+        const result = await getAddressFromCoords(coords);
+        setAddress(result);
       }
-
-      const data = await response.json();
-
-      const result = data.results[0].formatted_address;
-      setAddress(result);
-      console.log(address);
-    } catch (error) {
-      console.error("There was a problem with the fetch operation:", error);
     }
-  }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+    fetchAddress();
+  }, [coords]);
+
+  console.log({ name, description, location, coordinates });
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     if (coordinates!.lng === 0 && coordinates!.lat === 0) {
       alert("Invalid Address");
       return;
     }
+    console.log({ name, description, location, coordinates });
     props.closeForm();
   }
 

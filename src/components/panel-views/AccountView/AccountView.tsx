@@ -52,6 +52,7 @@ function AccountView() {
   function toggleModal() {
     setIsModalOpen((prev) => !prev);
   }
+
   return (
     <StyledAccountView>
       <Typography tag="h1" tagStyle="heading1">

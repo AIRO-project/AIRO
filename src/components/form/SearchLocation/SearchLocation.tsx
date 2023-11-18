@@ -1,13 +1,9 @@
+import { ChangeEvent, useRef } from "react";
 import { StandaloneSearchBox } from "@react-google-maps/api";
-import { ChangeEvent, useState } from "react";
-import styled from "styled-components";
 
-import typography from "/src/styles/Typography/typography";
+import { StyledInput } from "./SearchLocation.styles";
 
-type Coordinates = {
-  lat: number;
-  lng: number;
-};
+import { Coordinates } from "/src/forms/DeviceForm/DeviceForm";
 
 type Props = {
   value: string;
@@ -15,32 +11,11 @@ type Props = {
   setCoordinates: (coords: Coordinates) => void;
 };
 
-const StyledInput = styled.input`
-  ${typography.subtitle4}
-  color: var(--color-white);
-  border: none;
-  outline: none;
-  background-color: var(--color-grey-dark-2);
-  border-radius: 0.2rem;
-  width: 40rem;
-  padding: 0.6rem 1.2rem;
-
-  &:hover,
-  &:focus {
-    border: 2px solid var(--color-primary);
-    padding: calc(0.6rem - 2px) calc(1.2rem - 2px);
-  }
-  &::placeholder {
-    color: var(--color-white);
-    opacity: 0.6;
-  }
-`;
-
 function SearchLocation(props: Props) {
-  const [searchBox, setSearchBox] = useState<google.maps.places.SearchBox>();
+  const searchBox = useRef<google.maps.places.SearchBox>();
 
   function handleSelect() {
-    const places = searchBox!.getPlaces();
+    const places = searchBox.current!.getPlaces();
     const placeCoords = places[0].geometry!.location;
     const selectedPlace = places[0].formatted_address;
 
@@ -58,7 +33,7 @@ function SearchLocation(props: Props) {
 
   return (
     <StandaloneSearchBox
-      onLoad={(ref) => setSearchBox(ref)}
+      onLoad={(ref) => (searchBox.current = ref)}
       onPlacesChanged={handleSelect}
     >
       <StyledInput
