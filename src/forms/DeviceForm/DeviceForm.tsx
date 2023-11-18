@@ -47,15 +47,12 @@ function DeviceForm(props: Props) {
     fetchAddress();
   }, [coords]);
 
-  console.log({ name, description, location, coordinates });
-
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (coordinates!.lng === 0 && coordinates!.lat === 0) {
       alert("Invalid Address");
       return;
     }
-    console.log({ name, description, location, coordinates });
     props.closeForm();
   }
 
