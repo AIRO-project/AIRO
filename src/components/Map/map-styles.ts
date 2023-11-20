@@ -191,6 +191,6 @@ const mapStyles = [
       },
     ],
   },
-];
+] as google.maps.MapTypeStyle[];
 
 export default mapStyles;
