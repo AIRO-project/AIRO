@@ -3,6 +3,7 @@ import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
 
+import devicesReducer from "../slices/devicesSlice";
 import notificationReducer from "../slices/notificationSlice";
 import sidePanelReducer from "../slices/sidePanelSlice";
 import userReducer from "../slices/userSlice";
@@ -10,6 +11,7 @@ import userReducer from "../slices/userSlice";
 const rootReducer = combineReducers({
   sidePanel: sidePanelReducer,
   user: userReducer,
+  devices: devicesReducer,
   notification: notificationReducer,
 });
 
