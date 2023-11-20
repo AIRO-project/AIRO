@@ -4,19 +4,16 @@ import {
   StyledNavbar,
   StyledNavbarActions,
   StyledNavbarLogo,
-  StyledSearchBar,
-  StyledSearchBarInput,
-  StyledSearchButton,
 } from "./Navbar.styles";
 
-import Icon from "/src/assets/svgs/Icon";
 import Logo from "/src/assets/svgs/airo-logo.svg";
 import Typography from "/src/styles/Typography";
-import Switch from "/src/components/form/Switch/Switch";
 import Button from "/src/components/ui/Button";
 import { toggleSidePanel } from "/src/state/slices/sidePanelSlice";
 import User from "/src/components/ui/User";
 import { selectUser } from "/src/state/slices/userSlice";
+import SearchBar from "/src/components/SearchBar/SearchBar";
+import Switch from "/src/components/form/Switch/Switch";
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -41,20 +38,7 @@ function Navbar() {
           Voronoi clasterization
         </Typography>
         <Switch value="Voronoi clasterization" handleChange={() => {}} />
-        <StyledSearchBar>
-          <StyledSearchButton>
-            <Icon name="filter" height="12px" width="12px" />
-          </StyledSearchButton>
-          <StyledSearchBarInput placeholder="Type address..." />
-          <StyledSearchButton>
-            <Icon
-              name="search"
-              height="18px"
-              width="18px"
-              color="var(--color-grey-light-2)"
-            />
-          </StyledSearchButton>
-        </StyledSearchBar>
+        <SearchBar />
       </StyledNavbarActions>
 
       {user.isLoggedIn ? (
