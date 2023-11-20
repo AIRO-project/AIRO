@@ -50,6 +50,7 @@ function Input({
       placeholder={placeholder}
       value={inputValue}
       onChange={handleInputChange}
+      required
     />
   );
 

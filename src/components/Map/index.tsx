@@ -1,4 +1,5 @@
-import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import { GoogleMap, Libraries, useJsApiLoader } from "@react-google-maps/api";
+import { useState } from "react";
 
 import useGeolocation from "/src/hooks/useGeolocation";
 
@@ -19,9 +20,12 @@ const mapOptions = {
 };
 
 function Map() {
+  const [libraries] = useState<Libraries>(["maps", "places"]);
+
   const { isLoaded } = useJsApiLoader({
     id: "google-maps",
     googleMapsApiKey: import.meta.env.VITE_APP_MAP_API_KEY,
+    libraries,
   });
   const { longitude: lng, latitude: lat } = useGeolocation();
 

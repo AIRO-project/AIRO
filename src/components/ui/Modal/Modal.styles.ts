@@ -17,7 +17,7 @@ export const StyledModalOverlay = styled.div`
 
 export const StyledModalContent = styled.div`
   position: relative;
-  background: var(--color-grey-dark-2);
+  background: var(--color-grey-dark-1);
   padding: 5.2rem 3.7rem;
   animation: ${scaleUp} 0.3s ease-in-out;
 `;

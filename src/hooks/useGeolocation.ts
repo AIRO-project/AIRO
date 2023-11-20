@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-interface Location {
+export interface Location {
   latitude: number | null;
   longitude: number | null;
   error: string | null;
@@ -31,9 +31,9 @@ function useGeolocation(): Location {
     };
 
     const options: PositionOptions = {
-      enableHighAccuracy: true,
+      enableHighAccuracy: false,
       timeout: 5000,
-      maximumAge: 0,
+      maximumAge: Infinity,
     };
 
     if (navigator.geolocation) {
