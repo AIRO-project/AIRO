@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import Device from "../../ui/Device/Device";
 import User from "../../ui/User";
@@ -12,9 +12,8 @@ import {
 } from "./AccountView.styles";
 
 import Icon from "/src/assets/svgs/Icon";
-import { handleSignOut } from "/src/auth/handleSignOut";
 import Typography from "/src/styles/Typography";
-import { selectUser } from "/src/state/slices/userSlice";
+import { logout, selectUser } from "/src/state/slices/userSlice";
 
 type Device = {
   type: "gateway" | "device";
@@ -42,6 +41,7 @@ const devices: Device[] = [
 
 function AccountView() {
   const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   return (
     <StyledAccountView>
@@ -85,7 +85,7 @@ function AccountView() {
           </AccountButton>
         </AccountLink>
 
-        <AccountButton onClick={handleSignOut}>
+        <AccountButton onClick={() => dispatch(logout())}>
           <Icon name="sign-out" height="2.4rem" width="2.4rem" />
           <Typography tag="p" tagStyle="subtitle4">
             Sign Out

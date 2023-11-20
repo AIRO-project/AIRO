@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { RootState } from "../store";
 
+import { handleSignOut } from "/src/auth/handleSignOut";
+
 type IUser = {
   isLoggedIn: boolean;
   userName: string | null;
@@ -30,6 +32,7 @@ export const userSlice = createSlice({
       state.userName = null;
       state.userImg = null;
       state.userEmail = null;
+      handleSignOut();
     },
   },
 });
