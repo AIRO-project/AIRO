@@ -19,30 +19,7 @@ import { handleSignOut } from "/src/auth/handleSignOut";
 import { logout, selectUser } from "/src/state/slices/userSlice";
 import Typography from "/src/styles/Typography";
 import DeviceForm from "/src/forms/DeviceForm/DeviceForm";
-
-type Device = {
-  type: "gateway" | "device";
-  name: string;
-  address: string;
-};
-
-const devices: Device[] = [
-  {
-    type: "gateway",
-    name: "Gateway 1",
-    address: "Chisinau, Moldova",
-  },
-  {
-    type: "device",
-    name: "Device 1",
-    address: "Hincesti, Moldova",
-  },
-  {
-    type: "device",
-    name: "Device 2",
-    address: "Gura Galbenei, Moldova",
-  },
-];
+import useGetDevices from "/src/hooks/useGetDevices";
 
 function AccountView() {
   const user = useSelector(selectUser);
@@ -52,6 +29,8 @@ function AccountView() {
   function toggleModal() {
     setIsModalOpen((prev) => !prev);
   }
+
+  const { devices } = useGetDevices();
 
   return (
     <StyledAccountView>
@@ -67,16 +46,11 @@ function AccountView() {
       />
 
       <StyledDevicesList>
-        {devices.map((device, idx) => {
-          return (
-            <Device
-              key={idx}
-              name={device.name}
-              address={device.address}
-              type={device.type}
-            />
-          );
-        })}
+        {devices
+          ?.filter((device) => device.user === user.userEmail)
+          .map((device, idx) => {
+            return <Device key={idx} device={device} />;
+          })}
       </StyledDevicesList>
 
       <StyledAddNewButton onClick={toggleModal}>
