@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   FormButtons,
@@ -15,7 +16,10 @@ import Input from "/src/components/form/Input/Input";
 import useGeolocation from "/src/hooks/useGeolocation";
 import Icon from "/src/assets/svgs/Icon";
 import SearchLocation from "/src/components/form/SearchLocation/SearchLocation";
-import { getAddressFromCoords } from "/src/utils/helpers";
+import { getAddressFromCoords, getAirQualityData } from "/src/utils/helpers";
+import { showNotification } from "/src/state/slices/notificationSlice";
+import { addDevice } from "/src/state/slices/devicesSlice";
+import { selectUser } from "/src/state/slices/userSlice";
 
 type Props = {
   type: "create" | "edit";
@@ -34,7 +38,9 @@ function DeviceForm(props: Props) {
   const [address, setAddress] = useState("");
   const [coordinates, setCoordinates] = useState<Coordinates>();
 
+  const user = useSelector(selectUser);
   const coords = useGeolocation();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchAddress() {
@@ -43,17 +49,47 @@ function DeviceForm(props: Props) {
         setAddress(result);
       }
     }
-
     fetchAddress();
   }, [coords]);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (coordinates!.lng === 0 && coordinates!.lat === 0) {
-      alert("Invalid Address");
-      return;
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    try {
+      e.preventDefault();
+
+      if (coordinates!.lng === 0 && coordinates!.lat === 0) {
+        alert("Invalid Address");
+        return;
+      }
+
+      const data = await getAirQualityData(coordinates!);
+
+      const metrics = { ...data.list[0].components, ...data.list[0].main };
+      const device = {
+        description,
+        name,
+        coordinates,
+        address: location,
+        user: user.userEmail,
+        metrics,
+      };
+
+      dispatch(addDevice(device));
+      props.closeForm();
+
+      dispatch(
+        showNotification({
+          type: "success",
+          message: "The device was created successfully!",
+        })
+      );
+    } catch (err) {
+      dispatch(
+        showNotification({
+          type: "error",
+          message: (err as Error).message,
+        })
+      );
     }
-    props.closeForm();
   }
 
   function handleLocationClick() {

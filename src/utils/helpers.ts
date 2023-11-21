@@ -1,5 +1,6 @@
 import { KeyboardEvent, RefObject } from "react";
 
+import { Coordinates } from "../forms/DeviceForm/DeviceForm";
 import { Location } from "../hooks/useGeolocation";
 
 /**
@@ -35,5 +36,31 @@ export async function getAddressFromCoords(coords: Location) {
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);
     return;
+  }
+}
+
+/**
+ * Fetches air quality data from the Openweathermap AirQuality API based on coordinates.
+ * @param {Coordinates} coords - The coordinates (latitude and longitude) for which weather data is requested.
+ * @returns {Promise<object>} - A promise that resolves to the fetched weather data as an object.
+ * @throws {Error} - Throws an error if coordinates are invalid or if there's a failure to fetch weather data.
+ */
+
+export async function getAirQualityData(coords: Coordinates) {
+  if (!coords || (!coords.lat && !coords.lng)) {
+    throw new Error("Invalid coordinates provided");
+  }
+
+  const response = await fetch(
+    `http://api.openweathermap.org/data/2.5/air_pollution?lat=${
+      coords!.lat
+    }&lon=${coords!.lng}&appid=${import.meta.env.VITE_APP_WEATHER_API_KEY}`
+  );
+
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  } else {
+    throw new Error("Failed to fetch air data");
   }
 }

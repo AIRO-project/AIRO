@@ -5,4 +5,7 @@ export type DeviceT = {
   address: string;
   user: string;
   id?: string;
+  metrics: {
+    [key: string]: number;
+  };
 };
