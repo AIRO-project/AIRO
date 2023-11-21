@@ -52,7 +52,7 @@ export async function getAirQualityData(coords: Coordinates) {
   }
 
   const response = await fetch(
-    `http://api.openweathermap.org/data/2.5/air_pollution?lat=${
+    `https://api.openweathermap.org/data/2.5/air_pollution?lat=${
       coords!.lat
     }&lon=${coords!.lng}&appid=${import.meta.env.VITE_APP_WEATHER_API_KEY}`
   );
