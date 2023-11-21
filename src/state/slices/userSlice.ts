@@ -29,14 +29,9 @@ export const handleSignIn = createAsyncThunk("user/handleSignIn", async () => {
   try {
     const provider = new GoogleAuthProvider();
     const result = await signInWithPopup(auth, provider);
-    const user = result.user;
-    return {
-      userName: user.displayName,
-      userImg: user.photoURL,
-      userEmail: user.email,
-    };
+    return result.user;
   } catch (error) {
-    console.log("SignIn error", error);
+    console.error("SignIn error", error);
   }
 }) as any;
 
@@ -46,7 +41,7 @@ export const handleSignOut = createAsyncThunk(
     try {
       await signOut(auth);
     } catch (error) {
-      console.log("LogOut error", error);
+      console.error("LogOut error", error);
     }
   }
 ) as any;
@@ -59,20 +54,17 @@ export const userSlice = createSlice({
     builder.addCase(handleSignIn.fulfilled, (state, action) => {
       state.isLoggedIn = true;
       state.loading = false;
-      state.userName = action.payload!.userName;
-      state.userImg = action.payload!.userImg;
-      state.userEmail = action.payload!.userEmail;
+      state.userName = action.payload!.displayName;
+      state.userImg = action.payload!.photoURL;
+      state.userEmail = action.payload!.email;
     });
     builder.addCase(handleSignIn.pending, (state) => {
       state.loading = true;
+      state.error = "";
     });
     builder.addCase(handleSignIn.rejected, (state, action) => {
-      state.isLoggedIn = false;
       state.loading = false;
       state.error = action.error.message!;
-      state.userName = null;
-      state.userImg = null;
-      state.userEmail = null;
     });
     builder.addCase(handleSignOut.fulfilled, (state) => {
       state.isLoggedIn = false;
