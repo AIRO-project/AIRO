@@ -29,7 +29,7 @@ function AccountView() {
     setIsModalOpen((prev) => !prev);
   }
 
-  const devices = useSelector(selectDevices);
+  const { devices } = useSelector(selectDevices);
 
   return (
     <StyledAccountView>
@@ -45,10 +45,10 @@ function AccountView() {
       />
 
       <StyledDevicesList>
-        {devices.devices
+        {devices
           ?.filter((device) => device.user === user.userEmail)
-          .map((device, idx) => {
-            return <Device key={idx} device={device} />;
+          .map((device) => {
+            return <Device key={device.id} device={device} />;
           })}
       </StyledDevicesList>
 

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { collection, addDoc, doc, deleteDoc } from "firebase/firestore";
-import { db } from "src/config/firebase";
 
+import { db } from "/src/config/firebase";
 import { DeviceT } from "/src/types/DeviceT";
 
 import { RootState } from "../store";
