@@ -19,7 +19,7 @@ import { handleSignOut } from "/src/auth/handleSignOut";
 import { logout, selectUser } from "/src/state/slices/userSlice";
 import Typography from "/src/styles/Typography";
 import DeviceForm from "/src/forms/DeviceForm/DeviceForm";
-import useGetDevices from "/src/hooks/useGetDevices";
+import { selectDevices } from "/src/state/slices/devicesSlice";
 
 function AccountView() {
   const user = useSelector(selectUser);
@@ -30,7 +30,7 @@ function AccountView() {
     setIsModalOpen((prev) => !prev);
   }
 
-  const { devices } = useGetDevices();
+  const devices = useSelector(selectDevices);
 
   return (
     <StyledAccountView>
@@ -46,7 +46,7 @@ function AccountView() {
       />
 
       <StyledDevicesList>
-        {devices
+        {devices.devices
           ?.filter((device) => device.user === user.userEmail)
           .map((device, idx) => {
             return <Device key={idx} device={device} />;

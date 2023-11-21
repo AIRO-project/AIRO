@@ -12,11 +12,13 @@ import AccountView from "../../panel-views/AccountView/AccountView";
 import SettingsView from "../../panel-views/SeettingsView/SettingsView";
 
 import { selectUser } from "/src/state/slices/userSlice";
+import useGetDevices from "/src/hooks/useGetDevices";
 
 function SidePanel() {
   const user = useSelector(selectUser);
   const isOpen = useSelector(selectSidePanelIsOpen);
   const dispatch = useDispatch();
+  useGetDevices();
 
   const handleClose = () => {
     dispatch(toggleSidePanel());
