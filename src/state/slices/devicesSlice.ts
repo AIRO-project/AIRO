@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { collection, addDoc, doc, deleteDoc } from "firebase/firestore";
-import { db } from "src/config/firebase";
-import { Device } from "src/types/Device";
+
+import { db } from "/src/config/firebase";
+import { DeviceT } from "/src/types/DeviceT";
 
 import { RootState } from "../store";
 
 export const addDevice = createAsyncThunk(
   "devices/addDevice",
-  async (device: Device) => {
+  async (device: DeviceT) => {
     try {
       await addDoc(collection(db, "devices"), {
         ...device,
@@ -32,7 +33,7 @@ export const deleteDevice = createAsyncThunk(
 ) as any;
 
 type DevicesT = {
-  devices: Device[];
+  devices: DeviceT[];
   loading: boolean;
   error: string;
 };

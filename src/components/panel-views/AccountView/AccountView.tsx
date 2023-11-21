@@ -18,30 +18,7 @@ import Icon from "/src/assets/svgs/Icon";
 import { handleSignOut, selectUser } from "/src/state/slices/userSlice";
 import Typography from "/src/styles/Typography";
 import DeviceForm from "/src/forms/DeviceForm/DeviceForm";
-
-type Device = {
-  type: "gateway" | "device";
-  name: string;
-  address: string;
-};
-
-const devices: Device[] = [
-  {
-    type: "gateway",
-    name: "Gateway 1",
-    address: "Chisinau, Moldova",
-  },
-  {
-    type: "device",
-    name: "Device 1",
-    address: "Hincesti, Moldova",
-  },
-  {
-    type: "device",
-    name: "Device 2",
-    address: "Gura Galbenei, Moldova",
-  },
-];
+import { selectDevices } from "/src/state/slices/devicesSlice";
 
 function AccountView() {
   const user = useSelector(selectUser);
@@ -51,6 +28,8 @@ function AccountView() {
   function toggleModal() {
     setIsModalOpen((prev) => !prev);
   }
+
+  const { devices } = useSelector(selectDevices);
 
   return (
     <StyledAccountView>
@@ -66,16 +45,11 @@ function AccountView() {
       />
 
       <StyledDevicesList>
-        {devices.map((device, idx) => {
-          return (
-            <Device
-              key={idx}
-              name={device.name}
-              address={device.address}
-              type={device.type}
-            />
-          );
-        })}
+        {devices
+          ?.filter((device) => device.user === user.userEmail)
+          .map((device) => {
+            return <Device key={device.id} device={device} />;
+          })}
       </StyledDevicesList>
 
       <StyledAddNewButton onClick={toggleModal}>

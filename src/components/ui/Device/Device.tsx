@@ -7,26 +7,26 @@ import {
 import Icon from "/src/assets/svgs/Icon";
 import Typography from "/src/styles/Typography";
 
+import { DeviceT } from "../../../types/DeviceT";
+
 type Props = {
-  type: "gateway" | "device";
-  name: string;
-  address: string;
+  device: DeviceT;
 };
 
-function Device({ type, name, address }: Props) {
+function Device({ device }: Props) {
   return (
     <StyledDevice>
       <StyledDeviceIcon>
-        <Icon name={type} />
+        <Icon name="device" />
       </StyledDeviceIcon>
 
       <StyledDeviceInfo>
         <Typography tag="h2" tagStyle="heading2">
-          {name}
+          {device.name}
         </Typography>
 
         <Typography tag="p" tagStyle="label3">
-          {address}
+          {device.address}
         </Typography>
       </StyledDeviceInfo>
     </StyledDevice>
