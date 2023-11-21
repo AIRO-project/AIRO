@@ -1,4 +1,4 @@
-export type Device = {
+export type DeviceT = {
   name: string;
   description: string;
   coords: { lat: number; lng: number };
