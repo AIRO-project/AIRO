@@ -14,8 +14,8 @@ export const addDevice = createAsyncThunk(
       await addDoc(collection(db, "devices"), {
         ...device,
       });
-    } catch (err) {
-      console.error("Error adding document: ", err);
+    } catch {
+      throw new Error("Could not Save Device in Database");
     }
   }
 ) as any;
@@ -26,8 +26,8 @@ export const deleteDevice = createAsyncThunk(
     try {
       const device = doc(db, "devices", id);
       await deleteDoc(device);
-    } catch (error) {
-      console.log(error);
+    } catch {
+      throw new Error("Could not Delete Device");
     }
   }
 ) as any;
