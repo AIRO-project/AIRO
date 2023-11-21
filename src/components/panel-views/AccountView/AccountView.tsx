@@ -15,8 +15,7 @@ import {
 } from "./AccountView.styles";
 
 import Icon from "/src/assets/svgs/Icon";
-import { handleSignOut } from "/src/auth/handleSignOut";
-import { logout, selectUser } from "/src/state/slices/userSlice";
+import { handleSignOut, selectUser } from "/src/state/slices/userSlice";
 import Typography from "/src/styles/Typography";
 import DeviceForm from "/src/forms/DeviceForm/DeviceForm";
 
@@ -103,8 +102,7 @@ function AccountView() {
 
         <AccountButton
           onClick={() => {
-            handleSignOut();
-            dispatch(logout());
+            dispatch(handleSignOut());
           }}
         >
           <Icon name="sign-out" height="2.4rem" width="2.4rem" />
