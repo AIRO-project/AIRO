@@ -14,11 +14,7 @@ import mapStyles from "./map-styles";
 import { useSelector } from "react-redux";
 
 import { selectDevices } from "/src/state/slices/devicesSlice";
-import {
-  greenMarker,
-  orangeMarker,
-  redMarker,
-} from "/src/assets/svgs/markers/markers";
+import { greenMarker, orangeMarker, redMarker } from "/src/assets/svgs/markers";
 
 const containerStyle = {
   width: "100%",
