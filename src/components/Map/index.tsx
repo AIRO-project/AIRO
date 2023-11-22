@@ -4,6 +4,7 @@ import { useState } from "react";
 import useGeolocation from "/src/hooks/useGeolocation";
 
 import MapControls from "./Controls";
+import MapLoader from "./MapLoader";
 import mapStyles from "./map-styles";
 
 const containerStyle = {
@@ -41,7 +42,7 @@ function Map() {
       <MapControls />
     </GoogleMap>
   ) : (
-    <></>
+    <MapLoader />
   );
 }
 
