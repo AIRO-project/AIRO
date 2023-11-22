@@ -7,6 +7,7 @@ export interface Location {
 }
 
 const defaultLocation = {
+  //center of Chisinau, Moldova
   latitude: 47.024801,
   longitude: 28.832526,
 };
