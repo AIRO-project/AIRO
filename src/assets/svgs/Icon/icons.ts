@@ -19,4 +19,5 @@ export type Icons =
   | "locator"
   | "zoom-in"
   | "zoom-out"
-  | "location";
+  | "location"
+  | "menu";
