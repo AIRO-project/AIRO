@@ -9,13 +9,23 @@ import Typography from "/src/styles/Typography";
 
 import { DeviceT } from "../../../types/DeviceT";
 
+import { useDispatch } from "react-redux";
+
+import { setSelectedDevice } from "/src/state/slices/devicesSlice";
+
 type Props = {
   device: DeviceT;
 };
 
 function Device({ device }: Props) {
+  const dispatch = useDispatch();
+
+  function handleDeviceClick() {
+    dispatch(setSelectedDevice(device));
+  }
+
   return (
-    <StyledDevice>
+    <StyledDevice onClick={handleDeviceClick}>
       <StyledDeviceIcon>
         <Icon name="device" />
       </StyledDeviceIcon>

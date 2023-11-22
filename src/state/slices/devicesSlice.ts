@@ -36,12 +36,14 @@ type DevicesT = {
   devices: DeviceT[];
   loading: boolean;
   error: string;
+  selectedDevice: DeviceT | null;
 };
 
 const initialState: DevicesT = {
   devices: [],
   loading: false,
   error: "",
+  selectedDevice: null,
 };
 
 export const devicesSlice = createSlice({
@@ -50,6 +52,9 @@ export const devicesSlice = createSlice({
   reducers: {
     setDevices: (state, action) => {
       state.devices = action.payload;
+    },
+    setSelectedDevice: (state, action) => {
+      state.selectedDevice = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -76,5 +81,5 @@ export const devicesSlice = createSlice({
   },
 });
 export const selectDevices = (state: RootState) => state.devices;
-export const { setDevices } = devicesSlice.actions;
+export const { setDevices, setSelectedDevice } = devicesSlice.actions;
 export default devicesSlice.reducer;

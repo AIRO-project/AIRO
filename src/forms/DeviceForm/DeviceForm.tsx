@@ -18,7 +18,7 @@ import Icon from "/src/assets/svgs/Icon";
 import SearchLocation from "/src/components/form/SearchLocation/SearchLocation";
 import { getAddressFromCoords, getAirQualityData } from "/src/utils/helpers";
 import { showNotification } from "/src/state/slices/notificationSlice";
-import { addDevice } from "/src/state/slices/devicesSlice";
+import { addDevice, setSelectedDevice } from "/src/state/slices/devicesSlice";
 import { selectUser } from "/src/state/slices/userSlice";
 
 type Props = {
@@ -75,6 +75,7 @@ function DeviceForm(props: Props) {
 
       dispatch(addDevice(device));
       props.closeForm();
+      dispatch(setSelectedDevice(device));
 
       dispatch(
         showNotification({
