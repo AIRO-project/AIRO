@@ -43,6 +43,7 @@ function Map() {
   const { longitude: lng, latitude: lat } = useGeolocation();
   const canRenderMap = isLoaded && lng && lat;
   const { devices } = useSelector(selectDevices);
+  const { selectedDevice } = useSelector(selectDevices);
 
   function returnMarkerColor(aqi: number) {
     if (aqi < 3) {
@@ -57,7 +58,9 @@ function Map() {
   return canRenderMap ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={{ lat, lng }}
+      center={
+        selectedDevice ? { ...selectedDevice?.coordinates } : { lat, lng }
+      }
       zoom={15}
       options={mapOptions}
     >
