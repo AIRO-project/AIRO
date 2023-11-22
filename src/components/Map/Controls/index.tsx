@@ -63,7 +63,7 @@ function MapControls() {
   };
 
   useEffect(() => {
-    selectedDevice && map && map.panTo({ ...selectedDevice.coordinates });
+    selectedDevice && map?.panTo({ ...selectedDevice.coordinates });
   }, [selectedDevice, map]);
 
   return (

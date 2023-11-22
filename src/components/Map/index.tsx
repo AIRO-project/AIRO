@@ -5,9 +5,6 @@ import {
   useJsApiLoader,
 } from "@react-google-maps/api";
 import { useState } from "react";
-import greenMarker from "src/assets/svgs/gradient colored/device-mark-green.svg";
-import orangeMarker from "src/assets/svgs/gradient colored/device-mark-orange.svg";
-import redMarker from "src/assets/svgs/gradient colored/device-mark-red.svg";
 
 import useGeolocation from "/src/hooks/useGeolocation";
 
@@ -17,6 +14,11 @@ import mapStyles from "./map-styles";
 import { useSelector } from "react-redux";
 
 import { selectDevices } from "/src/state/slices/devicesSlice";
+import {
+  greenMarker,
+  orangeMarker,
+  redMarker,
+} from "/src/assets/svgs/markers/markers";
 
 const containerStyle = {
   width: "100%",
@@ -50,7 +52,7 @@ function Map() {
       return greenMarker;
     } else if (aqi >= 3 && aqi < 5) {
       return orangeMarker;
-    } else if (aqi === 5) {
+    } else {
       return redMarker;
     }
   }
@@ -64,13 +66,10 @@ function Map() {
       zoom={15}
       options={mapOptions}
     >
-      {devices?.map((device) => (
+      {devices.map((device) => (
         <Marker
           key={device.id}
-          position={{
-            lat: device.coordinates.lat,
-            lng: device.coordinates.lng,
-          }}
+          position={device.coordinates}
           icon={returnMarkerColor(device.metrics.aqi)}
         />
       ))}
