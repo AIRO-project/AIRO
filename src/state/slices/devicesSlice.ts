@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { collection, addDoc, doc, deleteDoc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  doc,
+  deleteDoc,
+  updateDoc,
+} from "firebase/firestore";
 
 import { db } from "/src/config/firebase";
 import { DeviceT } from "/src/types/DeviceT";
@@ -28,6 +34,18 @@ export const deleteDevice = createAsyncThunk(
       await deleteDoc(device);
     } catch {
       throw new Error("Could not Delete Device");
+    }
+  }
+) as any;
+
+export const editDevice = createAsyncThunk(
+  "devices/editDevice",
+  async ({ id, updatedDevice }: { id: string; updatedDevice: DeviceT }) => {
+    try {
+      const deviceRef = doc(db, "devices", id);
+      await updateDoc(deviceRef, updatedDevice);
+    } catch {
+      throw new Error("Could not Edit Device");
     }
   }
 ) as any;
@@ -75,6 +93,16 @@ export const devicesSlice = createSlice({
       state.loading = false;
     });
     builder.addCase(deleteDevice.rejected, (state, action) => {
+      state.error = action.error.message!;
+      state.loading = false;
+    });
+    builder.addCase(editDevice.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(editDevice.fulfilled, (state) => {
+      state.loading = false;
+    });
+    builder.addCase(editDevice.rejected, (state, action) => {
       state.error = action.error.message!;
       state.loading = false;
     });

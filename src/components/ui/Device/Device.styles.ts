@@ -1,6 +1,19 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+import { fadeIn } from "/src/styles/global/animations";
+
+const slide = keyframes`
+ 0%{
+  transform: translateX(30rem)
+ }
+
+ 100% {
+  transform: translateX(0)
+ }
+`;
 
 export const StyledDevice = styled.button`
+  position: relative;
   border: none;
   background-color: var(--color-grey-dark-2);
   border-radius: 0.2rem;
@@ -10,9 +23,15 @@ export const StyledDevice = styled.button`
   display: flex;
   gap: 2.1rem;
   transition: all 0.2s;
+  animation: ${fadeIn} 0.8s ease-in-out;
+  animation: ${slide} 0.4s ease-in-out;
 
   &:hover {
     background-color: var(--color-black);
+  }
+
+  &:hover a {
+    display: flex;
   }
 `;
 
@@ -47,5 +66,20 @@ export const StyledDeviceInfo = styled.div`
 
   p {
     color: var(--color-grey-light-1);
+  }
+`;
+
+export const StyledMenuButton = styled.a`
+  display: none;
+  position: absolute;
+  border-radius: 0.2rem;
+  padding: 0.1rem 0.6rem;
+  cursor: pointer;
+  top: 0.4rem;
+  right: 0.4rem;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--color-grey-dark-1);
   }
 `;

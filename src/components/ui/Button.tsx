@@ -21,6 +21,13 @@ const StyledButton = styled.button`
   &:active {
     background-color: var(--color-primary-dark);
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    border: none;
+    background-color: var(--color-grey-dark-2);
+    color: var(--color-grey-light-1);
+  }
 `;
 
 const ButtonNormal = styled(StyledButton)<{ $width: string }>`
@@ -51,6 +58,7 @@ type ButtonProps = {
   onClick?: () => void;
   tabIndex?: number;
   children: ReactNode;
+  disabled?: boolean;
 };
 
 /**
@@ -58,7 +66,8 @@ type ButtonProps = {
  * @prop `width` [string: any valid `css` width unit] - the width of the button. Default value: `100%`;
  * @prop `type` [string: "normal" | "outline"] - the type of the button. Default value: `normal`;
  * @prop `className` [should not be passed] - this is added to make extending styles of the `Button` component possible, see https://styled-components.com/docs/basics#styling-any-component for more info;
- * @prop `tabIndex` [number] - tabIndex of the Button, is useful when we want to disable the button from accessibility (eg: tabIndex={-1}). 
+ * @prop `tabIndex` [number] - tabIndex of the Button, is useful when we want to disable the button from accessibility (eg: tabIndex={-1}).
+ * @prop `disabled` [boolean] - optional disable prop, default is true
  */
 function Button({
   className,
@@ -67,6 +76,7 @@ function Button({
   type = "normal",
   tabIndex = 0,
   children,
+  disabled = false,
 }: ButtonProps) {
   return type === "outline" ? (
     <ButtonOutline
@@ -74,6 +84,7 @@ function Button({
       className={className}
       onClick={onClick}
       $width={width}
+      disabled={disabled}
     >
       {children}
     </ButtonOutline>
@@ -83,6 +94,7 @@ function Button({
       className={className}
       onClick={onClick}
       $width={width}
+      disabled={disabled}
     >
       {children}
     </ButtonNormal>
