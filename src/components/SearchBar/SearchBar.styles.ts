@@ -1,11 +1,13 @@
 import { styled } from "styled-components";
 
-export const StyledSearchBar = styled.div`
+export const StyledSearchBar = styled.form<{ $isFocused: boolean }>`
   position: relative;
   height: 3rem;
   width: 40rem;
   border-radius: 1.6rem;
-  border: 1px solid var(--color-grey-light-2);
+  border: 1px solid
+    ${({ $isFocused }) =>
+      $isFocused ? "var(--color-white)" : "var(--color-grey-light-2)"};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,8 +28,11 @@ export const StyledSearchBarInput = styled.input`
     color: var(--color-grey-light-1);
   }
 `;
+
 export const StyledSearchButton = styled.button`
   cursor: pointer;
+  width: 1.8rem;
+  height: 1.8rem;
   background-color: transparent;
   border: none;
   outline: none;
