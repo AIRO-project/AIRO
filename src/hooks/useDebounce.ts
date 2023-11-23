@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 
-function useDebounce<T, D>(
-  value: T,
-  searchArray: D[],
+function useDebounce<T>(
   onDebounce: () => void,
+  depArr: T[],
   debounceTime: number = 1000
 ) {
   const [isDebouncing, setIsDebouncing] = useState(false);
@@ -16,7 +15,7 @@ function useDebounce<T, D>(
     }, debounceTime);
     return () => clearTimeout(timeoutId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, searchArray]);
+  }, depArr);
 
   return isDebouncing;
 }

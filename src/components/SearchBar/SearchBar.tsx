@@ -57,10 +57,9 @@ function SearchBar() {
     setFocusedDevice
   );
 
-  const isLoading = useDebounce<string, DeviceT>(
-    searchValue,
-    devices,
+  const isLoading = useDebounce<string | DeviceT[]>(
     searchDevicesOnDebounce,
+    [searchValue, devices],
     300
   );
 
