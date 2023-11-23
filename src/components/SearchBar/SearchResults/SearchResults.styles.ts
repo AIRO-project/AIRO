@@ -26,7 +26,7 @@ export const Container = styled.ul<{ $scrollNeeded: boolean }>`
   }
 `;
 
-export const StyledResult = styled.ul<{
+export const StyledResult = styled.li<{
   $isFocused: boolean;
 }>`
   ${typography.label2}
