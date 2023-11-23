@@ -18,6 +18,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
+  blacklist: ["devices", "notification", "sidePanel"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

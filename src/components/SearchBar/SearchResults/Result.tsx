@@ -1,32 +1,30 @@
-import { MouseEventHandler, ReactNode } from "react";
-import { styled } from "styled-components";
+import { ReactNode } from "react";
 
-import typography from "/src/styles/Typography/typography";
+import { DeviceT } from "/src/types/DeviceT";
 
-const StyledResult = styled.button<{ onClick: MouseEventHandler }>`
-  ${typography.label2}
-  cursor: pointer;
-  width: 100%;
-  border: none;
-  text-align: start;
-  background-color: var(--color-grey-dark-2);
-  color: var(--color-white);
-  padding: 0.4rem 0.8rem;
-
-  &:hover,
-  &:focus {
-    background-color: var(--color-primary);
-  }
-`;
+import { StyledResult } from "./SearchResults.styles";
 
 function Result({
   onClick,
   children,
+  isFocused,
+  value,
 }: {
-  onClick: MouseEventHandler;
+  onClick: (device: DeviceT) => void;
   children: ReactNode;
+  isFocused: boolean;
+  value: DeviceT;
 }) {
-  return <StyledResult onClick={onClick}>{children}</StyledResult>;
+  return (
+    <StyledResult
+      onClick={() => {
+        onClick(value);
+      }}
+      $isFocused={isFocused}
+    >
+      {children}
+    </StyledResult>
+  );
 }
 
 export default Result;

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useGoogleMap } from "@react-google-maps/api";
 import { useSelector } from "react-redux";
 import { styled } from "styled-components";
@@ -6,6 +7,7 @@ import useGeolocation from "/src/hooks/useGeolocation";
 import Icon from "/src/assets/svgs/Icon";
 import Button from "/src/components/ui/Button";
 import { selectSidePanelIsOpen } from "/src/state/slices/sidePanelSlice";
+import { selectDevices } from "/src/state/slices/devicesSlice";
 
 const Controls = styled.div<{ $isOpen: boolean }>`
   position: absolute;
@@ -38,6 +40,7 @@ function MapControls() {
   const map = useGoogleMap();
   const sidePanelIsOpen = useSelector(selectSidePanelIsOpen);
   const { longitude: lng, latitude: lat } = useGeolocation();
+  const { selectedDevice } = useSelector(selectDevices);
 
   const handleZoomIn = () => {
     if (map) {
@@ -58,6 +61,10 @@ function MapControls() {
       map.panTo({ lat, lng });
     }
   };
+
+  useEffect(() => {
+    selectedDevice && map?.panTo({ ...selectedDevice.coordinates });
+  }, [selectedDevice, map]);
 
   return (
     <Controls $isOpen={sidePanelIsOpen}>

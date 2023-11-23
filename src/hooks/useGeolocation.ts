@@ -6,6 +6,12 @@ export interface Location {
   error: string | null;
 }
 
+const defaultLocation = {
+  //center of Chisinau, Moldova
+  latitude: 47.024801,
+  longitude: 28.832526,
+};
+
 function useGeolocation(): Location {
   const [coordinates, setCoordinates] = useState<Location>({
     latitude: null,
@@ -24,8 +30,8 @@ function useGeolocation(): Location {
 
     const handleError = (error: GeolocationPositionError) => {
       setCoordinates({
-        latitude: null,
-        longitude: null,
+        latitude: defaultLocation.latitude,
+        longitude: defaultLocation.longitude,
         error: error.message || "Error retrieving location",
       });
     };
